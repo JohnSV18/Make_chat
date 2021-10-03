@@ -17,6 +17,7 @@ module.exports = (io, socket, onlineUsers, channels) => {
       //Emit only to sockets that are in that channel room.
       io.to(data.channel).emit('new message', data);
     });
+  
 
     socket.on('get online users', () => {
       //Send over the onlineUsers
@@ -51,7 +52,10 @@ module.exports = (io, socket, onlineUsers, channels) => {
         messages : channels[newChannel]
       });
     });
+
+    // socket.on('get channel messages', () => {
+    //     //send over currents channels messages
+    //     socket.emit('get channel messages', channels);
+    // })
       
     }
-  
-  

@@ -8,6 +8,7 @@ $(document).ready(()=>{
     // Get the online users from the server
     socket.emit('get online users');
     socket.emit('user changed channel', "General");
+    // socket.emit('get channel messages');
 
     //Users can change the channel by clicking on its name.
     $(document).on('click', '.channel', (e)=>{
@@ -82,6 +83,7 @@ $(document).ready(()=>{
         $('.users-online').append(`<div class="user-online">${username}</div>`);
     }
     })
+
    //Refresh the online user list
     socket.on('user has left', (onlineUsers) => {
       $('.users-online').empty();
@@ -112,5 +114,16 @@ $(document).ready(()=>{
         `);
       });
     });
+
+    // socket.on('get channel messages', (channels) => {
+    //     for(message in channels[channel]){
+    //         $('.message-container').append(`
+    //             <div class="message">
+    //                 <p class="message-user">${channels[channel][message].sender}: </p>
+    //                 <p class="message-text">${channels[channel][message].message}</p>
+    //             </div>
+    //         `);
+    //     }
+    // })
   
   })
